@@ -211,7 +211,8 @@ function sendDeadletter(msg) {
   }
 }
 function sendMsgToString(msg){
-  return {topic:msg.topic, key:msg.key,partition:msg.partition,attributes: msg.attributes}.toString()
+  if(!msg) return "empty message" + (new Error().stack);
+  return {topic:msg.topic, key:msg.key,partition:msg.partition,attributes: msg.attributes}.toString();
 }
 function processMessageNoCompression(node, msg, msgData) {
   if(logger.active) logger.send({label:"processMessageNoCompression",msg:msg})
