@@ -18,7 +18,7 @@ function messageAttributes(msg){
 }
 
 function producerSend(node, msgIn, retry=0) {
-  if (logger.active) logger.send({ label: 'producerSend', node: node.id, retry: retry, msg:sendMsgToString })
+  if (logger.active) logger.send({ label: 'producerSend', node: node.id, retry: retry, msg: sendMsgToString(msgIn) })
   /*
   //				node.KeyedMessage = kafka.KeyedMessage
   //	km = new KeyedMessage('key', 'message'),
