@@ -212,7 +212,7 @@ function sendDeadletter(msg) {
 }
 function sendMsgToString(msg){
   if(!msg) return "empty message" + (new Error().stack);
-  return {topic:msg.topic, key:msg.key,partition:msg.partition,attributes: msg.attributes}.toString();
+  return JSON.stringify({topic:msg.topic, key:msg.key,partition:msg.partition,attributes: msg.attributes});
 }
 function processMessageNoCompression(node, msg, msgData) {
   if(logger.active) logger.send({label:"processMessageNoCompression",msg:msg})
